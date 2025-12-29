@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#06121f" />
+  <title>Main Pesawat — Game di sini</title>
+  <meta name="description" content="Klik sekali → langsung main. Game pesawat ada di sini." />
+
+  <!-- OpenGraph (не обязательно, но приятно) -->
+  <meta property="og:title" content="Main Pesawat — Game di sini" />
+  <meta property="og:description" content="Klik sekali → langsung main." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg1:#06121f;
+      --bg2:#041a2a;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --accent1:#22c1c3; /* бирюза */
+      --accent2:#fdbb2d; /* тёплый жёлтый */
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(34,193,195,.28), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(253,187,45,.20), transparent 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(255,255,255,.06), transparent 65%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 16px 28px;
+    }
+
+    .card{
+      width:min(520px, 94vw);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 18px 18px;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .glow{
+      position:absolute;
+      inset:auto -140px -160px auto;
+      width:420px; height:420px;
+      background: radial-gradient(circle at 30% 30%, rgba(34,193,195,.38), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 12px;
+      border-radius:999px;
+      background: rgba(0,0,0,.24);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(34,193,195,.14);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -.2px;
+    }
+    p{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .mini{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 10px 0 14px;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      border-radius: 999px;
+      padding: 9px 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,.80);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .cta{
+      display:block;
+      width:100%;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      padding: 16px 16px;
+      border-radius: 18px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      color: #0b1220;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      box-shadow: 0 16px 40px rgba(34,193,195,.20), 0 16px 40px rgba(253,187,45,.18);
+      transition: transform .12s ease, filter .12s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta:active{ transform: translateY(1px) scale(.995); filter: brightness(.98); }
+
+    .help{
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.62);
+      line-height: 1.35;
+      text-align:center;
+    }
+
+    .sep{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 14px 0 12px;
+    }
+
+    .fine{
+      font-size: 11px;
+      color: rgba(255,255,255,.52);
+      text-align:center;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="glow" aria-hidden="true"></div>
+
+      <div class="badge">
+        <span class="dot"></span>
+        <span>🔥 Lagi viral hari ini</span>
+      </div>
+
+      <h1>✈️ Main “Pesawat” di sini</h1>
+      <p>Klik sekali → langsung main. Cepat, ringan, tanpa ribet.</p>
+
+      <div class="mini" aria-label="Quick info">
+        <div class="pill">⚡ 1 klik</div>
+        <div class="pill">📱 Mobile friendly</div>
+        <div class="pill"><span id="online">👀 1.2k</span> online</div>
+      </div>
+
+      <a class="cta" id="playBtn" href="#" rel="noopener">
+        ▶️ MAIN SEKARANG
+      </a>
+
+      <div class="help">
+        Kalau tidak kebuka: klik <b>⋮</b> → <b>Buka di browser</b>
+      </div>
+
+      <div class="sep"></div>
+      <div class="fine">
+        By continuing, you agree to the website’s terms.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // === 1) ВСТАВЬ СЮДА СВОЮ ССЫЛКУ (куда реально ведёшь играть) ===
+    const TARGET_URL = "https://lkcy.cc/b6f028";
+
+    // === 2) Пробрасываем все query-параметры (clickid, subid, etc.) дальше ===
+    function buildUrl(base) {
+      const u = new URL(base);
+      const qs = new URLSearchParams(window.location.search);
+      for (const [k, v] of qs.entries()) {
+        // не перетираем, если уже задано в base
+        if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+      }
+      return u.toString();
+    }
+
+    const btn = document.getElementById("playBtn");
+    btn.href = buildUrl(TARGET_URL);
+
+    // Лёгкая "социалка" (очень мягко, без лишнего)
+    const online = document.getElementById("online");
+    const base = 900 + Math.floor(Math.random() * 900); // 900–1800
+    online.textContent = "👀 " + base.toLocaleString("en-US");
+
+    // Ускоряем переход на мобилках: убираем 300ms delay на старых браузерах
+    btn.addEventListener("touchstart", () => {}, {passive:true});
+  </script>
+</body>
+</html>

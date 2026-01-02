@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#06121f" />
-  <title>Main Pesawat — Game di sini</title>
-  <meta name="description" content="Klik sekali → langsung main. Game pesawat ada di sini." />
+  <title>Play Plane Game — Start Here</title>
+  <meta name="description" content="One tap → play instantly. The plane game is here." />
 
-  <!-- OpenGraph (не обязательно, но приятно) -->
-  <meta property="og:title" content="Main Pesawat — Game di sini" />
-  <meta property="og:description" content="Klik sekali → langsung main." />
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Play Plane Game — Start Here" />
+  <meta property="og:description" content="One tap → play instantly." />
   <meta property="og:type" content="website" />
 
   <style>
@@ -20,8 +20,8 @@
       --stroke: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.72);
-      --accent1:#22c1c3; /* бирюза */
-      --accent2:#fdbb2d; /* тёплый жёлтый */
+      --accent1:#22c1c3; /* teal */
+      --accent2:#fdbb2d; /* warm yellow */
       --shadow: 0 18px 60px rgba(0,0,0,.55);
       --radius: 22px;
     }
@@ -170,24 +170,24 @@
 
       <div class="badge">
         <span class="dot"></span>
-        <span>🔥 Lagi viral hari ini</span>
+        <span>🔥 Trending today</span>
       </div>
 
-      <h1>✈️ Main “Pesawat” di sini</h1>
-      <p>Klik sekali → langsung main. Cepat, ringan, tanpa ribet.</p>
+      <h1>✈️ Play the “Plane” game here</h1>
+      <p>One tap → play instantly. Fast, lightweight, no hassle.</p>
 
       <div class="mini" aria-label="Quick info">
-        <div class="pill">⚡ 1 klik</div>
+        <div class="pill">⚡ 1 tap</div>
         <div class="pill">📱 Mobile friendly</div>
         <div class="pill"><span id="online">👀 1.2k</span> online</div>
       </div>
 
       <a class="cta" id="playBtn" href="#" rel="noopener">
-        ▶️ MAIN SEKARANG
+        ▶️ PLAY NOW
       </a>
 
       <div class="help">
-        Kalau tidak kebuka: klik <b>⋮</b> → <b>Buka di browser</b>
+        If it won’t open: tap <b>⋮</b> → <b>Open in browser</b>
       </div>
 
       <div class="sep"></div>
@@ -198,15 +198,15 @@
   </main>
 
   <script>
-    // === 1) ВСТАВЬ СЮДА СВОЮ ССЫЛКУ (куда реально ведёшь играть) ===
+    // === 1) PUT YOUR TARGET LINK HERE (where you actually send them to play) ===
     const TARGET_URL = "https://lkcy.cc/b6f028";
 
-    // === 2) Пробрасываем все query-параметры (clickid, subid, etc.) дальше ===
+    // === 2) Forward all query params (clickid, subid, etc.) ===
     function buildUrl(base) {
       const u = new URL(base);
       const qs = new URLSearchParams(window.location.search);
       for (const [k, v] of qs.entries()) {
-        // не перетираем, если уже задано в base
+        // don't overwrite if already set in base
         if (!u.searchParams.has(k)) u.searchParams.set(k, v);
       }
       return u.toString();
@@ -215,12 +215,12 @@
     const btn = document.getElementById("playBtn");
     btn.href = buildUrl(TARGET_URL);
 
-    // Лёгкая "социалка" (очень мягко, без лишнего)
+    // Light "social proof" (soft, no extra noise)
     const online = document.getElementById("online");
     const base = 900 + Math.floor(Math.random() * 900); // 900–1800
     online.textContent = "👀 " + base.toLocaleString("en-US");
 
-    // Ускоряем переход на мобилках: убираем 300ms delay на старых браузерах
+    // Remove 300ms delay on some mobile browsers
     btn.addEventListener("touchstart", () => {}, {passive:true});
   </script>
 </body>

@@ -3,31 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>날아가는 새 게임</title>
-  <meta name="description" content="고무줄로 하던 그 새 게임. 코드 입력하고 바로 시작해보세요." />
-
-  <meta property="og:title" content="날아가는 새 게임" />
-  <meta property="og:description" content="고무줄로 하던 그 새 게임 ㅋㅋ" />
-  <meta property="og:type" content="website" />
+  <title>게임 선택</title>
+  <meta name="description" content="원하는 게임을 선택하고 프로모션 코드를 확인하세요." />
 
   <style>
     :root {
-      --sky: #72d9ff;
-      --sky2: #bdf3ff;
-      --blue: #1b6dff;
-      --deep: #08213c;
-      --card: rgba(255, 255, 255, 0.88);
-      --card2: rgba(255, 255, 255, 0.72);
-      --text: #102034;
-      --muted: rgba(16, 32, 52, 0.66);
-      --yellow: #ffd84a;
-      --orange: #ff8a2a;
-      --green: #42e86f;
-      --pipe: #4fe64f;
-      --red: #ff4d63;
-      --stroke: rgba(255, 255, 255, 0.62);
-      --shadow: 0 26px 80px rgba(8, 33, 60, 0.30);
-      --radius: 30px;
+      --bg: #06111f;
+      --bg2: #0b1730;
+      --card: rgba(255, 255, 255, 0.095);
+      --card2: rgba(255, 255, 255, 0.14);
+      --stroke: rgba(255, 255, 255, 0.16);
+      --stroke-strong: rgba(255, 255, 255, 0.24);
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.68);
+      --soft: rgba(255, 255, 255, 0.48);
+      --green: #52ff9a;
+      --red: #ff3f64;
+      --yellow: #ffd15a;
+      --blue: #68d7ff;
+      --purple: #b06cff;
+      --orange: #ff8a2f;
+      --shadow: 0 26px 90px rgba(0, 0, 0, 0.46);
+      --radius: 28px;
     }
 
     * {
@@ -43,12 +40,14 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 12%, rgba(255, 216, 74, 0.46), transparent 26%),
-        radial-gradient(circle at 88% 18%, rgba(79, 230, 79, 0.34), transparent 28%),
-        linear-gradient(180deg, var(--sky2) 0%, var(--sky) 46%, #79e7b8 100%);
+        radial-gradient(circle at 50% -10%, rgba(104, 215, 255, 0.34), transparent 34%),
+        radial-gradient(circle at 4% 22%, rgba(255, 63, 100, 0.22), transparent 34%),
+        radial-gradient(circle at 100% 72%, rgba(82, 255, 154, 0.16), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(255, 209, 90, 0.12), transparent 34%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
       overflow-x: hidden;
     }
 
@@ -58,441 +57,429 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 14% 28%, rgba(255,255,255,.86) 0 18px, transparent 19px),
-        radial-gradient(circle at 20% 28%, rgba(255,255,255,.86) 0 24px, transparent 25px),
-        radial-gradient(circle at 27% 28%, rgba(255,255,255,.86) 0 18px, transparent 19px),
-        radial-gradient(circle at 76% 16%, rgba(255,255,255,.82) 0 16px, transparent 17px),
-        radial-gradient(circle at 82% 16%, rgba(255,255,255,.82) 0 22px, transparent 23px),
-        radial-gradient(circle at 88% 16%, rgba(255,255,255,.82) 0 15px, transparent 16px);
-      opacity: .7;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 120px;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, transparent, rgba(24, 148, 78, .28)),
-        repeating-linear-gradient(90deg, rgba(28, 148, 60, .24) 0 18px, rgba(44, 184, 78, .20) 18px 36px);
-      mask-image: linear-gradient(to top, black, transparent);
+        linear-gradient(rgba(255, 255, 255, 0.033) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at 50% 24%, black, transparent 78%);
     }
 
     .page {
       position: relative;
-      z-index: 1;
-      width: min(100%, 520px);
+      width: min(100%, 540px);
       min-height: 100vh;
       margin: 0 auto;
-      padding: 18px 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 18px 14px 28px;
     }
 
-    .card {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius);
-      border: 1px solid var(--stroke);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.72)),
-        var(--card);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      top: -84px;
-      right: -70px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,216,74,.72), transparent 68%);
-      pointer-events: none;
-    }
-
-    .card::after {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      left: -95px;
-      bottom: -95px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(79,230,79,.34), transparent 68%);
-      pointer-events: none;
-    }
-
-    .inner {
-      position: relative;
-      z-index: 2;
-      padding: 18px 14px 16px;
-    }
-
-    .topline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
       margin-bottom: 12px;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: rgba(8, 33, 60, 0.08);
-      border: 1px solid rgba(8, 33, 60, 0.08);
-      color: rgba(8, 33, 60, 0.78);
-      font-size: 12px;
-      font-weight: 1000;
-      white-space: nowrap;
+    .stat {
+      min-height: 56px;
+      padding: 11px 12px;
+      border: 1px solid var(--stroke);
+      border-radius: 19px;
+      background: rgba(255, 255, 255, 0.075);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 12px 38px rgba(0, 0, 0, 0.18);
     }
 
-    .dot {
+    .stat strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .online-dot {
+      display: inline-block;
       width: 8px;
       height: 8px;
+      margin-right: 6px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 14px rgba(66,232,111,.78);
-      animation: pulse 1.45s ease-in-out infinite;
+      box-shadow: 0 0 18px var(--green);
+      vertical-align: 1px;
+      animation: pulse 1.4s ease-in-out infinite;
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(.72); opacity: .55; }
+      50% { transform: scale(0.72); opacity: 0.58; }
     }
 
-    .tag {
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--yellow), #fff0a6);
-      color: #112033;
-      font-size: 12px;
-      font-weight: 1000;
-      white-space: nowrap;
-      box-shadow: 0 10px 28px rgba(255, 216, 74, .28);
+    .promo {
+      display: grid;
+      gap: 8px;
+      margin: 10px 0 14px;
+      padding: 13px;
+      border: 1px solid rgba(255, 209, 90, 0.34);
+      border-radius: 21px;
+      background:
+        linear-gradient(135deg, rgba(255, 209, 90, 0.20), rgba(255, 63, 100, 0.12)),
+        rgba(255, 255, 255, 0.055);
+      box-shadow: 0 16px 48px rgba(255, 93, 20, 0.13);
     }
 
-    h1 {
-      margin: 0;
-      font-size: 32px;
-      line-height: 1.05;
-      letter-spacing: -0.062em;
-      font-weight: 1000;
-    }
-
-    .pop {
-      display: inline-block;
-      color: var(--yellow);
-      text-shadow:
-        -2px -2px 0 var(--deep),
-         2px -2px 0 var(--deep),
-        -2px  2px 0 var(--deep),
-         2px  2px 0 var(--deep),
-         0px  4px 0 rgba(8, 33, 60, .22);
-    }
-
-    .pop.blue {
-      color: var(--blue);
-      text-shadow:
-        -2px -2px 0 rgba(255,255,255,.88),
-         2px -2px 0 rgba(255,255,255,.88),
-        -2px  2px 0 rgba(255,255,255,.88),
-         2px  2px 0 rgba(255,255,255,.88),
-         0px  4px 0 rgba(8, 33, 60, .12);
-    }
-
-    .sub {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 800;
-    }
-
-    .search-note {
-      margin-top: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      max-width: 100%;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.74);
-      border: 1px solid rgba(8, 33, 60, 0.08);
-      color: rgba(16, 32, 52, 0.78);
-      font-size: 12px;
-      line-height: 1.25;
-      font-weight: 1000;
-      box-shadow: 0 10px 24px rgba(8, 33, 60, 0.10);
-    }
-
-    .search-note b {
-      color: var(--blue);
-      letter-spacing: -0.01em;
-    }
-
-    .preview {
-      position: relative;
-      overflow: hidden;
-      margin-top: 14px;
-      border-radius: 24px;
-      border: 3px solid rgba(255, 255, 255, 0.90);
-      background: rgba(255,255,255,.52);
-      box-shadow: 0 18px 48px rgba(8, 33, 60, 0.22);
-    }
-
-    .preview img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 16 / 11;
-      object-fit: cover;
-      transform: scale(1.01);
-    }
-
-    .caption {
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
+    .promo-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      padding: 9px 10px;
-      border-radius: 16px;
-      background: rgba(8, 20, 34, 0.72);
-      border: 1px solid rgba(255,255,255,.20);
-      color: rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      font-size: 12px;
-      line-height: 1.25;
-      font-weight: 1000;
+      gap: 10px;
     }
 
-    .caption span:last-child {
-      color: var(--yellow);
+    .promo-title {
+      color: #fff5cc;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 1000;
+      letter-spacing: -0.02em;
+    }
+
+    .promo-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 8px 11px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #101827;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 1000;
+      letter-spacing: 0.08em;
       white-space: nowrap;
     }
 
-    .bonus {
-      margin-top: 13px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
-      align-items: center;
-      padding: 12px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(255,216,74,.95), rgba(255,138,42,.90));
-      color: #112033;
-      box-shadow: 0 16px 38px rgba(255, 138, 42, .22);
+    .promo-sub {
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 800;
     }
 
-    .bonus-title {
+    .hero {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 12px 0 14px;
+      padding: 0 2px;
+    }
+
+    .hero h1 {
       margin: 0;
-      font-size: 15px;
-      line-height: 1.18;
+      font-size: 29px;
+      letter-spacing: -0.06em;
+      line-height: 1.05;
       font-weight: 1000;
-      letter-spacing: -0.03em;
     }
 
-    .bonus-sub {
-      margin: 4px 0 0;
-      font-size: 12px;
-      line-height: 1.25;
-      font-weight: 850;
-      color: rgba(17, 32, 51, .68);
-    }
-
-    .code-copy {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 9px;
-      border: 0;
-      border-radius: 15px;
-      background: rgba(255,255,255,.92);
-      color: #112033;
+    .hero p {
+      margin: 7px 0 0;
+      color: var(--muted);
       font-size: 13px;
-      font-weight: 1000;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(8, 33, 60, .12);
-    }
-
-    .code-copy b {
-      letter-spacing: .05em;
-    }
-
-    .cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 58px;
-      margin-top: 13px;
-      border: 0;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #ff4d63, #ff8a2a);
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 1000;
-      letter-spacing: -0.02em;
-      box-shadow: 0 18px 40px rgba(255, 77, 99, .26);
-      transition: transform .14s ease, filter .14s ease;
-    }
-
-    .cta:active {
-      transform: scale(.985);
-      filter: brightness(.96);
-    }
-
-    .hint {
-      margin-top: 8px;
-      text-align: center;
-      color: rgba(16, 32, 52, .52);
-      font-size: 12px;
       line-height: 1.4;
       font-weight: 800;
     }
 
-    .guide {
-      margin-top: 13px;
-      border-radius: 20px;
-      border: 1px solid rgba(8, 33, 60, .08);
-      background: rgba(255, 255, 255, .48);
-      overflow: hidden;
-    }
-
-    .guide summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 13px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      color: rgba(16, 32, 52, .86);
+    .timer {
+      display: grid;
+      place-items: center;
+      min-width: 78px;
+      height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--stroke-strong);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.085);
+      color: #fff;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.20);
       font-size: 14px;
       font-weight: 1000;
+      font-variant-numeric: tabular-nums;
     }
 
-    .guide summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .arrow {
-      color: rgba(16, 32, 52, .44);
-      font-size: 12px;
-    }
-
-    .guide-body {
-      display: grid;
-      gap: 10px;
-      padding: 0 12px 12px;
-    }
-
-    .instruction-images {
+    .grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 13px;
     }
 
-    .instruction-images figure {
-      margin: 0;
+    .game-card {
+      position: relative;
       overflow: hidden;
-      border-radius: 16px;
-      border: 1px solid rgba(8, 33, 60, .08);
-      background: rgba(255,255,255,.76);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.07)),
+        rgba(16, 22, 42, 0.76);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+      transform: translateZ(0);
     }
 
-    .instruction-images img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
+    .game-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent 42%, rgba(0, 0, 0, 0.30));
     }
 
-    .instruction-images figcaption {
-      padding: 8px 10px;
-      color: rgba(16, 32, 52, .64);
-      font-size: 11px;
-      line-height: 1.35;
-      font-weight: 900;
-      background: rgba(255,255,255,.68);
+    .game-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -78px;
+      bottom: -78px;
+      z-index: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 68%);
+      pointer-events: none;
     }
 
-    .mini-steps {
+    .card-layout {
+      position: relative;
+      z-index: 2;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      grid-template-columns: 44% 1fr;
+      min-height: 206px;
     }
 
-    .mini-step {
-      padding: 10px;
-      border-radius: 15px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(8, 33, 60, .07);
-      color: rgba(16, 32, 52, .76);
+    .media {
+      position: relative;
+      min-height: 206px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.02);
+    }
+
+    .media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,.28));
+      pointer-events: none;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      padding: 7px 9px;
+      border-radius: 999px;
+      color: #101010;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 1000;
+      letter-spacing: 0.02em;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+    }
+
+    .badge.hot {
+      background: linear-gradient(135deg, #ffdf65, #ff4867);
+      color: #fff;
+    }
+
+    .badge.new {
+      background: linear-gradient(135deg, #7dffb1, #20d2ff);
+      color: #072116;
+    }
+
+    .content {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 14px 14px;
+    }
+
+    .game-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .game-title small {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
       font-size: 12px;
       line-height: 1.35;
+      font-weight: 850;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .mini-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255,255,255,.11);
+      color: rgba(255,255,255,.74);
+      font-size: 11px;
+      line-height: 1;
       font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .play-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 44px;
+      border: 0;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ff325d, #ff7a2f);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 1000;
+      box-shadow: 0 14px 32px rgba(255, 69, 55, 0.28);
+      cursor: pointer;
+      transition: transform 0.16s ease, filter 0.16s ease;
+    }
+
+    .play-btn:active {
+      transform: scale(0.97);
+      filter: brightness(0.94);
+    }
+
+    .play-btn.secondary {
+      background: linear-gradient(135deg, #36d675, #20d2ff);
+      box-shadow: 0 14px 32px rgba(32, 210, 255, 0.21);
+      color: #06111f;
+    }
+
+    .copy-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 9px;
+      margin-top: 13px;
+    }
+
+    .copy-code {
+      display: flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 10px 12px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 1000;
+      letter-spacing: 0.08em;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .copy-btn {
+      min-height: 42px;
+      padding: 0 13px;
+      border: 0;
+      border-radius: 15px;
+      background: rgba(255,255,255,.96);
+      color: #101827;
+      font-size: 13px;
+      font-weight: 1000;
+      cursor: pointer;
     }
 
     .toast {
       min-height: 17px;
-      margin-top: 7px;
-      color: rgba(16, 32, 52, .50);
+      margin-top: 9px;
+      color: rgba(255,255,255,.50);
       text-align: center;
       font-size: 12px;
       line-height: 1.35;
       font-weight: 800;
     }
 
-    @media (max-width: 380px) {
+    @media (max-width: 420px) {
       .page {
-        padding: 14px 10px 20px;
+        padding: 14px 10px 22px;
       }
 
-      .inner {
-        padding: 16px 12px 14px;
+      .card-layout {
+        grid-template-columns: 42% 1fr;
+        min-height: 194px;
       }
 
-      h1 {
-        font-size: 29px;
+      .media {
+        min-height: 194px;
       }
 
-      .sub {
-        font-size: 13px;
+      .content {
+        padding: 14px 12px 12px;
       }
 
-      .preview img {
-        aspect-ratio: 16 / 12;
+      .game-title {
+        font-size: 21px;
       }
 
-      .cta {
-        min-height: 56px;
-        font-size: 17px;
+      .hero h1 {
+        font-size: 26px;
       }
 
-      .bonus {
+      .promo-title {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .card-layout {
         grid-template-columns: 1fr;
       }
 
-      .code-copy {
-        justify-content: center;
-        min-height: 42px;
+      .media {
+        height: 178px;
+        min-height: 178px;
+      }
+
+      .media::after {
+        background: linear-gradient(to bottom, transparent, rgba(0,0,0,.38));
       }
     }
   </style>
@@ -500,100 +487,131 @@
 
 <body>
   <main class="page">
-    <section class="card" aria-label="Tappy Bird landing">
-      <div class="inner">
-
-        <div class="topline">
-          <div class="pill">
-            <span class="dot"></span>
-            요즘 찾는 그 게임
-          </div>
-          <div class="tag">🐤 TAPPY</div>
-        </div>
-
-        <section class="hero">
-          <h1>
-            <span class="pop">고무줄로 하던</span><br>
-            <span class="pop blue">그 새 게임 ㅋㅋ</span>
-          </h1>
-
-          <p class="sub">
-            영상에서 보던 그 게임 맞음.<br>
-            코드 복사하고 바로 시작하면 됨.
-          </p>
-
-          <div class="search-note">
-            🔎 검색창에 <b>Tappy Bird</b> 치면 됨
-          </div>
-        </section>
-
-        <div class="preview" aria-label="게임 미리보기">
-          <img src="game-3.gif" alt="날아가는 새 게임 미리보기" loading="eager" decoding="async" />
-          <div class="caption">
-            <span>선만 따라가면 됨</span>
-            <span>고무줄 꿀팁 ㅋㅋ</span>
-          </div>
-        </div>
-
-        <section class="bonus" aria-label="코드 안내">
-          <div>
-            <p class="bonus-title">코드 입력하면 500% 혜택 적용</p>
-            <p class="bonus-sub">코드: <b id="promoCodeText">TAPPY5</b></p>
-          </div>
-
-          <button class="code-copy" id="copyBtn" type="button">
-            <b>TAPPY5</b>
-            <span>복사</span>
-          </button>
-        </section>
-
-        <a class="cta" id="mainBtn" href="#" rel="nofollow noopener noreferrer">
-          ▶ 바로 시작하기
-        </a>
-
-        <div class="hint">
-          안 열리면 외부 브라우저에서 다시 열어보면 됨
-        </div>
-
-        <details class="guide">
-          <summary>
-            <span>📌 처음이면 여기만 확인</span>
-            <span class="arrow">▼</span>
-          </summary>
-
-          <div class="guide-body">
-            <div class="instruction-images">
-              <figure>
-                <img src="TAPPY5.jpg" alt="TAPPY5 안내 이미지" loading="lazy" decoding="async" />
-                <figcaption>① 게임 화면 예시</figcaption>
-              </figure>
-
-              <figure>
-                <img src="TOWER5-2-2.jpg" alt="코드 입력 예시" loading="lazy" decoding="async" />
-                <figcaption>② 코드 입력 예시</figcaption>
-              </figure>
-            </div>
-
-            <div class="mini-steps">
-              <div class="mini-step">1. 코드 복사</div>
-              <div class="mini-step">2. 버튼 클릭</div>
-              <div class="mini-step">3. 코드 칸에 붙여넣기</div>
-              <div class="mini-step">4. 바로 시작</div>
-            </div>
-          </div>
-        </details>
-
-        <div class="toast" id="toast">코드가 필요하면 먼저 복사해두면 됨</div>
-
+    <section class="topbar" aria-label="실시간 통계">
+      <div class="stat">
+        <strong><i class="online-dot"></i><span id="onlineCount">2845</span>명</strong>
+        <span>지금 플레이 중</span>
+      </div>
+      <div class="stat">
+        <strong>+<span id="winCount">123</span>명</strong>
+        <span>최근 1시간 참여</span>
       </div>
     </section>
+
+    <section class="promo" aria-label="프로모션 코드">
+      <div class="promo-top">
+        <div class="promo-title">프로모션 코드 입력하면 500% 혜택 적용</div>
+        <div class="promo-code" id="promoInline">TOWER5</div>
+      </div>
+      <div class="promo-sub">게임 선택 후 코드 칸이 보이면 그대로 붙여넣으면 됨</div>
+    </section>
+
+    <section class="hero">
+      <div>
+        <h1>지금 인기 게임</h1>
+        <p>원하는 게임을 고르고 바로 시작하세요</p>
+      </div>
+      <div class="timer" id="timer">03:00</div>
+    </section>
+
+    <section class="grid" aria-label="게임 목록">
+      <article class="game-card">
+        <div class="card-layout">
+          <div class="media">
+            <span class="badge hot">HOT</span>
+            <img src="assets/game-3.gif" alt="TAPPY BIRD 미리보기" loading="eager" decoding="async" />
+          </div>
+
+          <div class="content">
+            <div>
+              <h2 class="game-title">
+                TAPPY<br>BIRD
+                <small>고무줄로 하던 그 새 게임 ㅋㅋ</small>
+              </h2>
+
+              <div class="mini-info">
+                <span class="chip">🐤 BIRD</span>
+                <span class="chip">고무줄 꿀팁</span>
+                <span class="chip">빠른 시작</span>
+              </div>
+            </div>
+
+            <a class="play-btn" id="tappyBtn" href="#" rel="nofollow noopener noreferrer">
+              ▶ 플레이
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="game-card">
+        <div class="card-layout">
+          <div class="media">
+            <span class="badge new">NEW</span>
+            <img src="assets/game-2.gif" alt="TOWER RUSH 미리보기" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="content">
+            <div>
+              <h2 class="game-title">
+                TOWER<br>RUSH
+                <small>타이밍 맞춰서 건설하는 게임</small>
+              </h2>
+
+              <div class="mini-info">
+                <span class="chip">🏗️ BUILD</span>
+                <span class="chip">타이밍</span>
+                <span class="chip">인기 게임</span>
+              </div>
+            </div>
+
+            <a class="play-btn secondary" id="towerBtn" href="#" rel="nofollow noopener noreferrer">
+              ▶ 플레이
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="copy-row" aria-label="코드 복사">
+      <div class="copy-code" id="promoCode">TOWER5</div>
+      <button class="copy-btn" type="button" id="copyBtn">복사</button>
+    </section>
+
+    <div class="toast" id="toast">필요하면 코드를 먼저 복사해두면 됨</div>
   </main>
 
   <script>
     const CONFIG = {
-      targetUrl: "https://1weqdt.life/casino/play/v_100hp:tappybird_l?p=na5y",
-      promoCode: "TAPPY5"
+      promoCode: "TOWER5",
+      countdownSeconds: 180,
+
+      tappyUrl: "https://lkmn.cc/357520",
+      towerUrl: "https://lkbb.cc/568d",
+
+      onlineMin: 2360,
+      onlineMax: 3920,
+      onlineStart: 2845,
+
+      activeMin: 98,
+      activeMax: 178,
+      activeStart: 123
     };
+
+    const $ = (selector) => document.querySelector(selector);
+
+    const onlineCount = $("#onlineCount");
+    const winCount = $("#winCount");
+    const timer = $("#timer");
+    const promoInline = $("#promoInline");
+    const promoCode = $("#promoCode");
+    const copyBtn = $("#copyBtn");
+    const toast = $("#toast");
+    const tappyBtn = $("#tappyBtn");
+    const towerBtn = $("#towerBtn");
+
+    let currentOnline = CONFIG.onlineStart;
+    let currentActive = CONFIG.activeStart;
+    let secondsLeft = CONFIG.countdownSeconds;
 
     function buildUrl(base) {
       try {
@@ -612,52 +630,86 @@
       }
     }
 
-    const mainBtn = document.getElementById("mainBtn");
-    const promoCodeText = document.getElementById("promoCodeText");
-    const copyBtn = document.getElementById("copyBtn");
-    const toast = document.getElementById("toast");
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
 
-    mainBtn.href = buildUrl(CONFIG.targetUrl);
-    promoCodeText.textContent = CONFIG.promoCode;
-    copyBtn.querySelector("b").textContent = CONFIG.promoCode;
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function updateStats() {
+      currentOnline = clamp(currentOnline + randomInt(-17, 24), CONFIG.onlineMin, CONFIG.onlineMax);
+      currentActive = clamp(currentActive + randomInt(-2, 4), CONFIG.activeMin, CONFIG.activeMax);
+
+      onlineCount.textContent = currentOnline.toLocaleString("ko-KR");
+      winCount.textContent = currentActive.toLocaleString("ko-KR");
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60).toString().padStart(2, "0");
+      const seconds = (secondsLeft % 60).toString().padStart(2, "0");
+
+      timer.textContent = `${minutes}:${seconds}`;
+
+      secondsLeft -= 1;
+      if (secondsLeft < 0) secondsLeft = CONFIG.countdownSeconds;
+    }
 
     async function copyCode() {
-      const baseText = "코드가 필요하면 먼저 복사해두면 됨";
+      const baseText = "필요하면 코드를 먼저 복사해두면 됨";
       const doneText = "복사됨. 코드 칸에 붙여넣으면 됨";
 
       try {
         await navigator.clipboard.writeText(CONFIG.promoCode);
         toast.textContent = doneText;
-        copyBtn.querySelector("span").textContent = "완료";
+        copyBtn.textContent = "완료";
+
         setTimeout(() => {
           toast.textContent = baseText;
-          copyBtn.querySelector("span").textContent = "복사";
-        }, 1800);
+          copyBtn.textContent = "복사";
+        }, 1700);
       } catch (error) {
         const textarea = document.createElement("textarea");
         textarea.value = CONFIG.promoCode;
         textarea.setAttribute("readonly", "");
         textarea.style.position = "fixed";
         textarea.style.left = "-9999px";
+
         document.body.appendChild(textarea);
         textarea.select();
 
         try {
           document.execCommand("copy");
           toast.textContent = doneText;
-          copyBtn.querySelector("span").textContent = "완료";
+          copyBtn.textContent = "완료";
         } finally {
           document.body.removeChild(textarea);
+
           setTimeout(() => {
             toast.textContent = baseText;
-            copyBtn.querySelector("span").textContent = "복사";
-          }, 1800);
+            copyBtn.textContent = "복사";
+          }, 1700);
         }
       }
     }
 
+    promoInline.textContent = CONFIG.promoCode;
+    promoCode.textContent = CONFIG.promoCode;
+
+    tappyBtn.href = buildUrl(CONFIG.tappyUrl);
+    towerBtn.href = buildUrl(CONFIG.towerUrl);
+
     copyBtn.addEventListener("click", copyCode);
-    mainBtn.addEventListener("touchstart", () => {}, { passive: true });
+
+    tappyBtn.addEventListener("touchstart", () => {}, { passive: true });
+    towerBtn.addEventListener("touchstart", () => {}, { passive: true });
+
+    updateStats();
+    updateTimer();
+
+    setInterval(updateStats, 1900);
+    setInterval(updateTimer, 1000);
   </script>
 </body>
 </html>

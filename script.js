@@ -1,6 +1,5 @@
 (function () {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   const CONFIG = window.SITE_CONFIG || {};
 
   function isMobileDevice() {
@@ -17,12 +16,10 @@
     }
   }
 
-  /* Прямой видеофайл? (.mp4/.webm/.ogg/.mov, в т.ч. с ?query) */
   function asDirectVideo(url) {
     return /\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/i.test(url) ? url : null;
   }
 
-  /* Ссылка YouTube/Streamable/Vimeo → URL для встраивания через iframe. */
   function asEmbedUrl(url) {
     let m;
     if ((m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/i))) {
@@ -41,13 +38,11 @@
     const frame = document.querySelector(".tutorial-video-frame");
     const label = document.querySelector("[data-device-label]");
 
-    if (!frame) {
-      return;
-    }
+    if (!frame) return;
 
     const isMobile = isMobileDevice();
     if (label) {
-      label.textContent = isMobile ? "ВЕРСИЯ ДЛЯ ТЕЛЕФОНА" : "ВЕРСИЯ ДЛЯ ПК";
+      label.textContent = isMobile ? "모바일 버전" : "PC 버전";
     }
 
     const primary = (isMobile ? CONFIG.videoMobile : CONFIG.videoPc) || "";
@@ -65,10 +60,8 @@
     }
   }
 
-  /* --- Нативный плеер (прямой .mp4) — со стартовой кнопкой как раньше --- */
   function renderNativeVideo(frame, src, isMobile) {
     frame.innerHTML = "";
-
     const video = document.createElement("video");
     video.className = "tutorial-video";
     video.setAttribute("controls", "");
@@ -81,8 +74,7 @@
     const startButton = document.createElement("button");
     startButton.className = "video-start-button";
     startButton.type = "button";
-    startButton.innerHTML =
-      '<img src="hero.png" alt="" aria-hidden="true"><span>НАЧАТЬ ПРОСМОТР</span>';
+    startButton.innerHTML = '<img src="hero.png" alt="" aria-hidden="true"><span>시청 시작</span>';
 
     frame.appendChild(video);
     frame.appendChild(startButton);
@@ -105,24 +97,19 @@
     video.addEventListener("ended", () => startButton.classList.remove("is-hidden"));
   }
 
-  /* --- Встроенный плеер (YouTube/Streamable/Vimeo) --- */
   function renderEmbed(frame, src) {
     frame.innerHTML = "";
     const iframe = document.createElement("iframe");
     iframe.className = "tutorial-video tutorial-embed";
     iframe.src = src;
-    iframe.setAttribute("title", "Видео-инструкция TappyBird");
+    iframe.setAttribute("title", "비디오 설명서");
     iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute(
-      "allow",
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    );
+    iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
     iframe.setAttribute("allowfullscreen", "");
     iframe.addEventListener("load", trackWatch, { once: true });
     frame.appendChild(iframe);
   }
 
-  /* --- Фоллбэк: кнопка «Смотреть видео» (открывает ссылку в новой вкладке) --- */
   function renderFallbackButton(frame, url) {
     frame.innerHTML = "";
     const wrap = document.createElement("div");
@@ -134,74 +121,21 @@
       link.href = url;
       link.target = "_blank";
       link.rel = "noopener";
-      link.textContent = "СМОТРЕТЬ ВИДЕО";
+      link.textContent = "동영상 보기";
       link.addEventListener("click", trackWatch);
       wrap.appendChild(link);
     } else {
       const note = document.createElement("p");
       note.className = "video-fallback-note";
-      note.textContent = "Видео скоро появится";
+      note.textContent = "동영상이 곧 제공됩니다";
       wrap.appendChild(note);
     }
-
     frame.appendChild(wrap);
-  }
-
-  /* ---------- Кнопки лендинга (приходят из api.php, редактируются в админке) ---------- */
-  function isSafeUrl(url) {
-    return !/^\s*(javascript|data|vbscript)\s*:/i.test(url || "");
-  }
-
-  function buildButton(b) {
-    const a = document.createElement("a");
-    a.className = "action-button " + (b.variant === "secondary" ? "action-secondary" : "action-primary");
-    a.href = isSafeUrl(b.url) ? b.url : "#";
-    a.textContent = b.label;
-    a.setAttribute("data-track", "btn_" + b.id);
-    return a;
-  }
-
-  function renderActionRow(row, buttons) {
-    row.innerHTML = "";
-    buttons.forEach((b) => row.appendChild(buildButton(b)));
-  }
-
-  function setupButtons() {
-    const row = document.querySelector(".action-row");
-    const cta = document.querySelector("[data-cta-primary]");
-    if (!row && !cta) {
-      return;
-    }
-
-    const defaults = CONFIG.defaultButtons || [];
-    if (row) {
-      renderActionRow(row, defaults); // мгновенный показ, потом обновим с сервера
-    }
-
-    fetch((CONFIG.apiUrl || "api.php") + "?action=buttons", { cache: "no-store" })
-      .then((r) => r.json())
-      .then((d) => {
-        const list = d && Array.isArray(d.buttons) && d.buttons.length ? d.buttons : defaults;
-        if (row) {
-          renderActionRow(row, list);
-        }
-        if (cta) {
-          const primary = list.filter((b) => b.variant !== "secondary")[0] || list[0];
-          if (primary) {
-            cta.href = isSafeUrl(primary.url) ? primary.url : "#";
-            cta.textContent = primary.label;
-          }
-        }
-      })
-      .catch(() => { /* остаются дефолтные кнопки */ });
   }
 
   function setupCoins() {
     const birdWraps = document.querySelectorAll(".hero-bird-wrap");
-
-    if (!birdWraps.length || prefersReducedMotion) {
-      return;
-    }
+    if (!birdWraps.length || prefersReducedMotion) return;
 
     const random = (min, max) => Math.random() * (max - min) + min;
     const randomInt = (min, max) => Math.round(random(min, max));
@@ -243,11 +177,9 @@
     function scheduleCoin(wrap) {
       window.setTimeout(() => {
         createCoin(wrap);
-
         if (Math.random() > 0.62) {
           window.setTimeout(() => createCoin(wrap), randomInt(80, 210));
         }
-
         scheduleCoin(wrap);
       }, randomInt(260, 880));
     }
@@ -259,6 +191,5 @@
   }
 
   setupTutorialVideo();
-  setupButtons();
   setupCoins();
 })();

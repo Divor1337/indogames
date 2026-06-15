@@ -1,6 +1,6 @@
 :root {
   --pixel-font: "Press Start 2P", "Courier New", monospace;
-  --text-font: "Inter", Arial, sans-serif;
+  --text-font: "Inter", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
   --ink: #fff8df;
   --mint: #51f6c7;
   --gold: #ffd24c;
@@ -196,8 +196,8 @@ body {
 .shot img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .shot figcaption {
@@ -262,8 +262,6 @@ body {
   min-width: 0;
 }
 
-/* нечётная по счёту последняя кнопка занимает всю ширину
-   (1 кнопка → на всю; 3-я из трёх → на всю; и т.д.) */
 .action-row .action-button:last-child:nth-child(odd) {
   grid-column: 1 / -1;
 }
@@ -278,8 +276,9 @@ body {
   border: 3px solid rgba(255, 255, 255, 0.56);
   border-radius: 8px;
   color: var(--night);
-  font-family: var(--pixel-font);
-  font-size: 0.68rem;
+  font-family: var(--text-font);
+  font-size: 1rem;
+  font-weight: 800;
   line-height: 1.55;
   letter-spacing: 0;
   text-align: center;
@@ -838,7 +837,8 @@ body {
     min-width: 0;
     min-height: 54px;
     padding: 14px 16px;
-    font-size: 0.58rem;
+    font-size: 0.9rem;
+    font-weight: 800;
   }
 
   .instruction-panel {

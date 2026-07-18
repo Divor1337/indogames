@@ -1,181 +1,198 @@
 <!doctype html>
-<html lang="ko">
+<html lang="es-419">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#fffdf8">
-  <meta name="description" content="요즘 재밌는 게임과 가입 방법을 한곳에서 확인해보세요.">
-  <meta property="og:title" content="오늘의 게임 픽">
-  <meta property="og:description" content="게임 정보와 30초 가입 가이드를 확인해보세요.">
+  <meta name="theme-color" content="#090d19">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Descubre Falling Pickaxe y otros juegos arcade rápidos en una experiencia optimizada para móvil.">
+  <meta property="og:title" content="Drop Arcade — Juegos rápidos">
+  <meta property="og:description" content="Cuatro juegos, acceso directo y una guía clara para empezar.">
   <meta property="og:type" content="website">
-  <title>오늘의 게임 픽</title>
+  <title>Drop Arcade — Falling Pickaxe</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="site-shell" id="top">
-    <div class="ambient ambient-left" aria-hidden="true"></div>
-    <div class="ambient ambient-right" aria-hidden="true"></div>
+  <div class="page-noise" aria-hidden="true"></div>
 
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="오늘의 게임 픽 홈">
-        <span class="brand-mark" aria-hidden="true">
-          <span class="brand-flower">✿</span>
-        </span>
-        <span>오늘의 게임 픽</span>
-      </a>
+  <header class="topbar" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Drop Arcade, inicio">
+      <span class="brand-icon" aria-hidden="true">⛏</span>
+      <span class="brand-copy"><b>DROP</b><i>ARCADE</i></span>
+    </a>
 
-      <nav class="topnav" aria-label="빠른 메뉴">
-        <a href="#games">추천 게임</a>
-        <button type="button" data-open-guide>가입 방법</button>
-      </nav>
-    </header>
+    <nav class="topnav" aria-label="Navegación principal">
+      <a href="#juegos">Juegos</a>
+      <a href="#como-jugar">Cómo empezar</a>
+      <button type="button" data-open-bonus>Ver bono</button>
+    </nav>
+  </header>
 
-    <section class="hero" aria-labelledby="page-title">
-      <p class="hero-kicker"><span aria-hidden="true">✦</span> DAILY GAME CURATION</p>
-      <h1 id="page-title">오늘의 <span>게임 픽</span></h1>
-      <p class="hero-copy">
-        요즘 재밌는 게임만 모아봤어요.<br>
-        궁금한 게임을 골라 가볍게 확인해보세요.
-      </p>
+  <main>
+    <section class="hero section-shell" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span aria-hidden="true"></span> Selección arcade</p>
+        <h1 id="page-title">Cae rápido.<br><em>Juega más rápido.</em></h1>
+        <p class="hero-lead">
+          Falling Pickaxe y tres juegos de partidas cortas, reunidos en una experiencia ligera y pensada para tu teléfono.
+        </p>
 
-      <div class="hero-art" aria-hidden="true">
-        <span class="spark spark-one">◆</span>
-        <span class="spark spark-two">✦</span>
-        <img src="assets/hero-pixel-art.png" alt="">
-      </div>
-    </section>
-
-    <section class="promo-strip" aria-label="프로모션 안내">
-      <div class="promo-icon" aria-hidden="true">🎁</div>
-      <div class="promo-copy">
-        <span class="promo-label">WELCOME BONUS</span>
-        <strong>첫 충전 <em data-bonus>+500%</em> 보너스</strong>
-        <small>가입할 때 프로모션 코드를 입력하면 적용돼요.</small>
-      </div>
-      <button class="promo-code" type="button" data-copy-code aria-label="프로모션 코드 복사">
-        <span>CODE</span>
-        <b data-promo-code>PIXEL4</b>
-        <i data-copy-label>복사</i>
-      </button>
-    </section>
-
-    <section class="game-grid" id="games" aria-label="게임 메뉴">
-      <a
-        class="game-card game-card-blue"
-        href="https://lkmn.cc/6728"
-        data-game-link
-        rel="nofollow sponsored noopener noreferrer"
-      >
-        <span class="card-badge">TODAY'S PICK</span>
-        <span class="card-content">
-          <span class="card-eyebrow"><span aria-hidden="true">★</span> 추천 게임</span>
-          <strong>게임 바로 보기</strong>
-          <span class="card-description">오늘 골라본 게임을 바로 확인해보세요.</span>
-        </span>
-        <span class="card-pixels" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="card-arrow" aria-hidden="true">→</span>
-      </a>
-
-      <button class="game-card game-card-lime" type="button" data-open-guide>
-        <span class="card-badge">30 SEC GUIDE</span>
-        <span class="card-content">
-          <span class="card-eyebrow"><span aria-hidden="true">▣</span> 처음이라면</span>
-          <strong>가입 방법 보기</strong>
-          <span class="card-description">사진을 보면서 순서대로 따라 해보세요.</span>
-        </span>
-        <span class="card-pixels" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="card-arrow" aria-hidden="true">→</span>
-      </button>
-    </section>
-
-    <footer class="footer-note">
-      <span class="status-dot" aria-hidden="true"></span>
-      만 18세 이상 이용 가능 · 자세한 보너스 조건은 이동한 사이트에서 확인하세요.
-    </footer>
-  </main>
-
-  <a class="mobile-cta" href="https://lkmn.cc/6728" data-game-link rel="nofollow sponsored noopener noreferrer">
-    게임 바로 보기 <span aria-hidden="true">→</span>
-  </a>
-
-  <dialog class="guide-dialog" id="guideDialog" aria-labelledby="guideTitle">
-    <div class="dialog-shell">
-      <header class="dialog-header">
-        <div>
-          <span class="dialog-kicker">QUICK START</span>
-          <h2 id="guideTitle">30초 가입 가이드</h2>
-          <p>사진을 보면서 순서대로 따라 하면 돼요.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://lkmn.cc/6728" data-game-link>
+            Jugar ahora <span aria-hidden="true">→</span>
+          </a>
+          <a class="button button-ghost" href="#juegos">Ver los juegos</a>
         </div>
-        <button class="dialog-close" type="button" data-close-guide aria-label="가입 가이드 닫기">×</button>
+
+        <ul class="trust-list" aria-label="Características">
+          <li><span aria-hidden="true">✓</span> Optimizado para móvil</li>
+          <li><span aria-hidden="true">✓</span> Acceso directo</li>
+          <li><span aria-hidden="true">18+</span> Solo adultos</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-label="Vista previa de Falling Pickaxe">
+        <span class="visual-tag">Juego destacado</span>
+        <div class="hero-frame">
+          <img src="game-1.gif" alt="Animación del juego Falling Pickaxe" width="400" height="400" fetchpriority="high">
+        </div>
+        <span class="orbit orbit-one" aria-hidden="true"></span>
+        <span class="orbit orbit-two" aria-hidden="true"></span>
+        <span class="impact-word" aria-hidden="true">DROP!</span>
+      </div>
+    </section>
+
+    <section class="bonus-strip section-shell" aria-label="Bono de bienvenida">
+      <div class="bonus-icon" aria-hidden="true">✦</div>
+      <div class="bonus-copy">
+        <span>Bono de bienvenida</span>
+        <strong>Hasta <em data-bonus>+500%</em></strong>
+        <small>Consulta las condiciones y la disponibilidad en el sitio del operador.</small>
+      </div>
+      <button class="code-button" type="button" data-copy-code aria-label="Copiar código promocional">
+        <span>Código</span>
+        <b data-promo-code>PIXEL4</b>
+        <i data-copy-label>Copiar</i>
+      </button>
+      <button class="bonus-more" type="button" data-open-bonus>Detalles</button>
+    </section>
+
+    <section class="games section-shell" id="juegos" aria-labelledby="games-title">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span aria-hidden="true"></span> Elige tu partida</p>
+          <h2 id="games-title">Cuatro formas de entrar en acción</h2>
+        </div>
+        <p>Partidas rápidas, visuales y directas. Elige una y empieza.</p>
       </header>
 
-      <section class="modal-promo" aria-label="프로모션 코드">
-        <div>
-          <span>첫 충전 보너스</span>
-          <strong data-bonus>+500%</strong>
-        </div>
-        <button type="button" data-copy-code>
-          코드 <b data-promo-code>PIXEL4</b>
-          <i data-copy-label>복사하기</i>
-        </button>
-      </section>
+      <div class="game-grid">
+        <article class="game-card game-card-orange">
+          <div class="game-media">
+            <img src="game-1.gif" alt="Falling Pickaxe" width="400" height="400" loading="lazy" decoding="async">
+            <span class="card-badge">HOT</span>
+          </div>
+          <div class="game-body">
+            <span class="game-number">01</span>
+            <div><h3>Falling Pickaxe</h3><p>Cae, rompe el terreno y busca el mejor recorrido.</p></div>
+          </div>
+          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Falling Pickaxe">Jugar <span aria-hidden="true">↗</span></a>
+        </article>
 
-      <ol class="instruction-list">
-        <li class="instruction-step">
-          <div class="step-heading">
-            <span class="step-number">01</span>
-            <div><strong>가입 페이지 열기</strong><p>아래 버튼을 눌러 가입 페이지로 이동해요.</p></div>
+        <article class="game-card game-card-cyan">
+          <div class="game-media">
+            <img src="game-2.gif" alt="Tower Rush" width="400" height="400" loading="lazy" decoding="async">
+            <span class="card-badge">NUEVO</span>
           </div>
-          <div class="instruction-media">
-            <img src="assets/step-1.png" alt="가입 페이지를 여는 방법" loading="lazy">
-            <div class="media-placeholder"><b>STEP 1</b><span>assets/step-1.png</span><small>여기에 첫 번째 스크린샷이 표시돼요.</small></div>
+          <div class="game-body">
+            <span class="game-number">02</span>
+            <div><h3>Tower Rush</h3><p>Construye, decide y mantén la torre en movimiento.</p></div>
           </div>
-        </li>
+          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Tower Rush">Jugar <span aria-hidden="true">↗</span></a>
+        </article>
 
-        <li class="instruction-step">
-          <div class="step-heading">
-            <span class="step-number">02</span>
-            <div><strong>기본 정보 입력하기</strong><p>전화번호 또는 이메일과 비밀번호를 입력해요.</p></div>
+        <article class="game-card game-card-pink">
+          <div class="game-media">
+            <img src="game-3.gif" alt="Tappy Bird" width="400" height="400" loading="lazy" decoding="async">
+            <span class="card-badge">RÁPIDO</span>
           </div>
-          <div class="instruction-media">
-            <img src="assets/step-2.png" alt="가입 정보를 입력하는 방법" loading="lazy">
-            <div class="media-placeholder"><b>STEP 2</b><span>assets/step-2.png</span><small>여기에 두 번째 스크린샷이 표시돼요.</small></div>
+          <div class="game-body">
+            <span class="game-number">03</span>
+            <div><h3>Tappy Bird</h3><p>Un toque, un hueco y otra oportunidad de avanzar.</p></div>
           </div>
-        </li>
+          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Tappy Bird">Jugar <span aria-hidden="true">↗</span></a>
+        </article>
 
-        <li class="instruction-step instruction-step-highlight">
-          <div class="step-heading">
-            <span class="step-number">03</span>
-            <div><strong>프로모션 코드 입력하기</strong><p>코드 입력란에 <b data-promo-code>PIXEL4</b>을 붙여넣어요.</p></div>
+        <article class="game-card game-card-violet">
+          <div class="game-media">
+            <img src="game-4.gif" alt="Mines Grid" width="400" height="400" loading="lazy" decoding="async">
+            <span class="card-badge">TOP</span>
           </div>
-          <div class="instruction-media">
-            <img src="assets/step-3.png" alt="프로모션 코드를 입력하는 방법" loading="lazy">
-            <div class="media-placeholder"><b>STEP 3</b><span>assets/step-3.png</span><small>프로모션 코드 입력란 사진을 넣어주세요.</small></div>
+          <div class="game-body">
+            <span class="game-number">04</span>
+            <div><h3>Mines Grid</h3><p>Elige tus casillas y controla cada movimiento.</p></div>
           </div>
-        </li>
+          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Mines Grid">Jugar <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
 
-        <li class="instruction-step">
-          <div class="step-heading">
-            <span class="step-number">04</span>
-            <div><strong>가입 완료 후 시작하기</strong><p>등록을 완료하고 게임 페이지로 이동해요.</p></div>
-          </div>
-          <div class="instruction-media">
-            <img src="assets/step-4.png" alt="가입을 완료하는 방법" loading="lazy">
-            <div class="media-placeholder"><b>STEP 4</b><span>assets/step-4.png</span><small>여기에 마지막 스크린샷이 표시돼요.</small></div>
-          </div>
-        </li>
+    <section class="how section-shell" id="como-jugar" aria-labelledby="how-title">
+      <div class="how-intro">
+        <p class="eyebrow"><span aria-hidden="true"></span> Inicio rápido</p>
+        <h2 id="how-title">Entra en tres pasos</h2>
+        <p>Sin vueltas: abre el sitio, revisa los datos y elige tu juego.</p>
+      </div>
+      <ol class="steps">
+        <li><span>01</span><div><strong>Abre el acceso</strong><p>Usa cualquiera de los botones de esta página.</p></div></li>
+        <li><span>02</span><div><strong>Revisa la oferta</strong><p>Comprueba el bono, los requisitos y las condiciones.</p></div></li>
+        <li><span>03</span><div><strong>Elige tu juego</strong><p>Empieza con el formato que más te llame la atención.</p></div></li>
       </ol>
+    </section>
 
-      <footer class="dialog-footer">
-        <a href="https://lkmn.cc/6728" data-register-link rel="nofollow sponsored noopener noreferrer">
-          가입 페이지로 이동 <span aria-hidden="true">→</span>
-        </a>
-        <button type="button" data-close-guide>나중에 보기</button>
-      </footer>
+    <section class="final-cta section-shell" aria-labelledby="final-title">
+      <div>
+        <span>Falling Pickaxe te espera</span>
+        <h2 id="final-title">¿Listo para la caída?</h2>
+        <p>Entra, revisa las condiciones y juega con responsabilidad.</p>
+      </div>
+      <a class="button button-primary" href="https://lkmn.cc/6728" data-game-link>
+        Abrir el juego <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div class="footer-brand"><span aria-hidden="true">⛏</span><b>DROP ARCADE</b></div>
+    <p>Contenido promocional · Solo para mayores de 18 años · Juega con responsabilidad.</p>
+    <small>Los bonos, juegos y métodos de pago pueden variar según el país. Confirma siempre las condiciones en el sitio del operador.</small>
+    <span>© <span data-year></span> Drop Arcade</span>
+  </footer>
+
+  <a class="mobile-cta" href="https://lkmn.cc/6728" data-game-link>
+    Jugar Falling Pickaxe <span aria-hidden="true">→</span>
+  </a>
+
+  <dialog class="bonus-dialog" id="bonusDialog" aria-labelledby="bonusTitle">
+    <div class="dialog-shell">
+      <button class="dialog-close" type="button" data-close-bonus aria-label="Cerrar">×</button>
+      <span class="dialog-star" aria-hidden="true">✦</span>
+      <p class="dialog-kicker">BONO DE BIENVENIDA</p>
+      <h2 id="bonusTitle">Hasta <span data-bonus>+500%</span></h2>
+      <p>Regístrate desde el acceso oficial y revisa las condiciones del bono antes de participar.</p>
+      <button class="dialog-code" type="button" data-copy-code>
+        <span>Código promocional</span>
+        <strong data-promo-code>PIXEL4</strong>
+        <i data-copy-label>Copiar</i>
+      </button>
+      <a class="button button-primary" href="https://lkmn.cc/6728" data-game-link>
+        Ir al sitio <span aria-hidden="true">→</span>
+      </a>
+      <small>Sujeto a términos, elegibilidad y disponibilidad regional. Solo +18.</small>
     </div>
   </dialog>
 
-  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">프로모션 코드가 복사됐어요 ✓</div>
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">Código copiado ✓</div>
 </body>
 </html>

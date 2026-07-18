@@ -1,28 +1,23 @@
-// Все изменяемые данные собраны здесь.
 const CONFIG = {
   gameUrl: "https://lkmn.cc/6728",
-  registerUrl: "https://lkmn.cc/6728",
   promoCode: "PIXEL4",
   bonus: "+500%"
 };
 
-function withCurrentQuery(baseUrl) {
-  const url = new URL(baseUrl, window.location.href);
+function appendCurrentQuery(baseUrl) {
+  const destination = new URL(baseUrl, window.location.href);
   const currentParams = new URLSearchParams(window.location.search);
 
   currentParams.forEach((value, key) => {
-    if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+    if (!destination.searchParams.has(key)) destination.searchParams.set(key, value);
   });
 
-  return url.toString();
+  return destination.toString();
 }
 
 document.querySelectorAll("[data-game-link]").forEach((link) => {
-  link.href = withCurrentQuery(CONFIG.gameUrl);
-});
-
-document.querySelectorAll("[data-register-link]").forEach((link) => {
-  link.href = withCurrentQuery(CONFIG.registerUrl);
+  link.href = appendCurrentQuery(CONFIG.gameUrl);
+  link.rel = "nofollow sponsored noopener noreferrer";
 });
 
 document.querySelectorAll("[data-promo-code]").forEach((element) => {
@@ -33,26 +28,25 @@ document.querySelectorAll("[data-bonus]").forEach((element) => {
   element.textContent = CONFIG.bonus;
 });
 
-const guideDialog = document.getElementById("guideDialog");
-const guideOpeners = document.querySelectorAll("[data-open-guide]");
-const guideClosers = document.querySelectorAll("[data-close-guide]");
+document.querySelectorAll("[data-year]").forEach((element) => {
+  element.textContent = new Date().getFullYear();
+});
 
-guideOpeners.forEach((button) => {
+const bonusDialog = document.getElementById("bonusDialog");
+
+document.querySelectorAll("[data-open-bonus]").forEach((button) => {
   button.addEventListener("click", () => {
-    if (typeof guideDialog.showModal === "function") {
-      guideDialog.showModal();
-    } else {
-      guideDialog.setAttribute("open", "");
-    }
+    if (typeof bonusDialog.showModal === "function") bonusDialog.showModal();
+    else bonusDialog.setAttribute("open", "");
   });
 });
 
-guideClosers.forEach((button) => {
-  button.addEventListener("click", () => guideDialog.close());
+document.querySelectorAll("[data-close-bonus]").forEach((button) => {
+  button.addEventListener("click", () => bonusDialog.close());
 });
 
-guideDialog.addEventListener("click", (event) => {
-  if (event.target === guideDialog) guideDialog.close();
+bonusDialog.addEventListener("click", (event) => {
+  if (event.target === bonusDialog) bonusDialog.close();
 });
 
 const copyToast = document.getElementById("copyToast");
@@ -74,7 +68,7 @@ async function copyPromoCode() {
   }
 
   document.querySelectorAll("[data-copy-label]").forEach((label) => {
-    label.textContent = "복사됨 ✓";
+    label.textContent = "Copiado ✓";
   });
 
   copyToast.classList.add("is-visible");
@@ -82,7 +76,7 @@ async function copyPromoCode() {
   toastTimer = setTimeout(() => {
     copyToast.classList.remove("is-visible");
     document.querySelectorAll("[data-copy-label]").forEach((label) => {
-      label.textContent = label.closest(".modal-promo") ? "복사하기" : "복사";
+      label.textContent = "Copiar";
     });
   }, 2200);
 }
@@ -91,13 +85,9 @@ document.querySelectorAll("[data-copy-code]").forEach((button) => {
   button.addEventListener("click", copyPromoCode);
 });
 
-document.querySelectorAll(".instruction-media img").forEach((image) => {
-  const media = image.closest(".instruction-media");
-
-  if (image.complete && image.naturalWidth > 0) {
-    media.classList.add("has-image");
-  }
-
-  image.addEventListener("load", () => media.classList.add("has-image"));
-  image.addEventListener("error", () => media.classList.remove("has-image"));
+document.querySelectorAll(".game-media img").forEach((image) => {
+  image.addEventListener("error", () => {
+    image.closest(".game-media").classList.add("media-error");
+    image.remove();
+  });
 });

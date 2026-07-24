@@ -1,198 +1,122 @@
 <!doctype html>
-<html lang="es-419">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#090d19">
-  <meta name="color-scheme" content="dark">
-  <meta name="description" content="Descubre Falling Pickaxe y otros juegos arcade rápidos en una experiencia optimizada para móvil.">
-  <meta property="og:title" content="Drop Arcade — Juegos rápidos">
-  <meta property="og:description" content="Cuatro juegos, acceso directo y una guía clara para empezar.">
+  <meta name="theme-color" content="#07111f">
+  <meta
+    name="description"
+    content="Descubre Falling Pickaxe, consulta el bono disponible y accede al juego. Solo para mayores de 18 años."
+  >
+  <meta property="og:title" content="Falling Pickaxe | Juega ahora">
+  <meta
+    property="og:description"
+    content="Suelta el pico, consulta el bono disponible y accede al juego."
+  >
   <meta property="og:type" content="website">
-  <title>Drop Arcade — Falling Pickaxe</title>
+  <title>Falling Pickaxe | Juega ahora</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="page-noise" aria-hidden="true"></div>
+  <main class="page-shell">
+    <div class="background-grid" aria-hidden="true"></div>
+    <div class="glow glow-left" aria-hidden="true"></div>
+    <div class="glow glow-right" aria-hidden="true"></div>
 
-  <header class="topbar" id="inicio">
-    <a class="brand" href="#inicio" aria-label="Drop Arcade, inicio">
-      <span class="brand-icon" aria-hidden="true">⛏</span>
-      <span class="brand-copy"><b>DROP</b><i>ARCADE</i></span>
-    </a>
-
-    <nav class="topnav" aria-label="Navegación principal">
-      <a href="#juegos">Juegos</a>
-      <a href="#como-jugar">Cómo empezar</a>
-      <button type="button" data-open-bonus>Ver bono</button>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero section-shell" aria-labelledby="page-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span aria-hidden="true"></span> Selección arcade</p>
-        <h1 id="page-title">Cae rápido.<br><em>Juega más rápido.</em></h1>
-        <p class="hero-lead">
-          Falling Pickaxe y tres juegos de partidas cortas, reunidos en una experiencia ligera y pensada para tu teléfono.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://lkmn.cc/6728" data-game-link>
-            Jugar ahora <span aria-hidden="true">→</span>
-          </a>
-          <a class="button button-ghost" href="#juegos">Ver los juegos</a>
-        </div>
-
-        <ul class="trust-list" aria-label="Características">
-          <li><span aria-hidden="true">✓</span> Optimizado para móvil</li>
-          <li><span aria-hidden="true">✓</span> Acceso directo</li>
-          <li><span aria-hidden="true">18+</span> Solo adultos</li>
-        </ul>
-      </div>
-
-      <div class="hero-visual" aria-label="Vista previa de Falling Pickaxe">
-        <span class="visual-tag">Juego destacado</span>
-        <div class="hero-frame">
-          <img src="game-1.gif" alt="Animación del juego Falling Pickaxe" width="400" height="400" fetchpriority="high">
-        </div>
-        <span class="orbit orbit-one" aria-hidden="true"></span>
-        <span class="orbit orbit-two" aria-hidden="true"></span>
-        <span class="impact-word" aria-hidden="true">DROP!</span>
-      </div>
-    </section>
-
-    <section class="bonus-strip section-shell" aria-label="Bono de bienvenida">
-      <div class="bonus-icon" aria-hidden="true">✦</div>
-      <div class="bonus-copy">
-        <span>Bono de bienvenida</span>
-        <strong>Hasta <em data-bonus>+500%</em></strong>
-        <small>Consulta las condiciones y la disponibilidad en el sitio del operador.</small>
-      </div>
-      <button class="code-button" type="button" data-copy-code aria-label="Copiar código promocional">
-        <span>Código</span>
-        <b data-promo-code>PIXEL4</b>
-        <i data-copy-label>Copiar</i>
-      </button>
-      <button class="bonus-more" type="button" data-open-bonus>Detalles</button>
-    </section>
-
-    <section class="games section-shell" id="juegos" aria-labelledby="games-title">
-      <header class="section-heading">
-        <div>
-          <p class="eyebrow"><span aria-hidden="true"></span> Elige tu partida</p>
-          <h2 id="games-title">Cuatro formas de entrar en acción</h2>
-        </div>
-        <p>Partidas rápidas, visuales y directas. Elige una y empieza.</p>
+    <article class="offer-card" aria-labelledby="page-title">
+      <header class="offer-topline">
+        <span class="game-label">
+          <i aria-hidden="true"></i>
+          JUEGO DESTACADO
+        </span>
+        <span class="age-badge"></span>
       </header>
 
-      <div class="game-grid">
-        <article class="game-card game-card-orange">
-          <div class="game-media">
-            <img src="game-1.gif" alt="Falling Pickaxe" width="400" height="400" loading="lazy" decoding="async">
-            <span class="card-badge">HOT</span>
-          </div>
-          <div class="game-body">
-            <span class="game-number">01</span>
-            <div><h3>Falling Pickaxe</h3><p>Cae, rompe el terreno y busca el mejor recorrido.</p></div>
-          </div>
-          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Falling Pickaxe">Jugar <span aria-hidden="true">↗</span></a>
-        </article>
+      <div class="offer-layout">
+        <section class="offer-intro">
+          <p class="eyebrow">FALLING PICKAXE</p>
+          <h1 id="page-title">Suelta el pico.<br><span>Mira dónde cae.</span></h1>
+          <p class="intro-copy">Elige tu jugada y prueba tu suerte.</p>
+        </section>
 
-        <article class="game-card game-card-cyan">
-          <div class="game-media">
-            <img src="game-2.gif" alt="Tower Rush" width="400" height="400" loading="lazy" decoding="async">
-            <span class="card-badge">NUEVO</span>
+        <figure class="game-preview">
+          <div class="preview-frame">
+            <video
+              width="400"
+              height="400"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-label="Vista previa animada del juego Falling Pickaxe"
+            >
+              <source src="game-1.mp4" type="video/mp4">
+              <img
+                src="game-1.gif"
+                width="400"
+                height="400"
+                alt="Vista previa animada del juego Falling Pickaxe"
+              >
+            </video>
+            <span class="preview-tag">GAMEPLAY</span>
           </div>
-          <div class="game-body">
-            <span class="game-number">02</span>
-            <div><h3>Tower Rush</h3><p>Construye, decide y mantén la torre en movimiento.</p></div>
-          </div>
-          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Tower Rush">Jugar <span aria-hidden="true">↗</span></a>
-        </article>
+        </figure>
 
-        <article class="game-card game-card-pink">
-          <div class="game-media">
-            <img src="game-3.gif" alt="Tappy Bird" width="400" height="400" loading="lazy" decoding="async">
-            <span class="card-badge">RÁPIDO</span>
+        <section class="action-stack" aria-label="Bono y acceso al juego">
+          <div class="bonus-panel">
+            <div class="bonus-icon" aria-hidden="true">%</div>
+            <div>
+              <span>BONO DE BIENVENIDA</span>
+              <strong>Hasta <em data-bonus>+500%</em> en tu primer depósito</strong>
+              <small>Para nuevos usuarios elegibles. Aplican términos.</small>
+            </div>
           </div>
-          <div class="game-body">
-            <span class="game-number">03</span>
-            <div><h3>Tappy Bird</h3><p>Un toque, un hueco y otra oportunidad de avanzar.</p></div>
-          </div>
-          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Tappy Bird">Jugar <span aria-hidden="true">↗</span></a>
-        </article>
 
-        <article class="game-card game-card-violet">
-          <div class="game-media">
-            <img src="game-4.gif" alt="Mines Grid" width="400" height="400" loading="lazy" decoding="async">
-            <span class="card-badge">TOP</span>
+          <div class="promo-panel">
+            <div class="promo-value">
+              <span>CÓDIGO PROMOCIONAL</span>
+              <strong data-promo-code>PIXEL4</strong>
+            </div>
+            <button
+              class="copy-button"
+              type="button"
+              data-copy-code
+              aria-describedby="promoHint"
+            >
+              <span class="copy-icon" aria-hidden="true"></span>
+              <span data-copy-label>COPIAR</span>
+            </button>
           </div>
-          <div class="game-body">
-            <span class="game-number">04</span>
-            <div><h3>Mines Grid</h3><p>Elige tus casillas y controla cada movimiento.</p></div>
-          </div>
-          <a href="https://lkmn.cc/6728" data-game-link aria-label="Jugar Mines Grid">Jugar <span aria-hidden="true">↗</span></a>
-        </article>
+          <p class="promo-hint" id="promoHint">
+            Ingresa el código durante el registro.
+          </p>
+
+          <a
+            class="primary-cta"
+            href="https://lkmn.cc/6728"
+            data-game-link
+            rel="nofollow sponsored noopener noreferrer"
+          >
+            <span>JUGAR AHORA</span>
+            <i aria-hidden="true">→</i>
+          </a>
+          <p class="redirect-note">Serás redirigido al sitio del operador.</p>
+        </section>
       </div>
-    </section>
 
-    <section class="how section-shell" id="como-jugar" aria-labelledby="how-title">
-      <div class="how-intro">
-        <p class="eyebrow"><span aria-hidden="true"></span> Inicio rápido</p>
-        <h2 id="how-title">Entra en tres pasos</h2>
-        <p>Sin vueltas: abre el sitio, revisa los datos y elige tu juego.</p>
-      </div>
-      <ol class="steps">
-        <li><span>01</span><div><strong>Abre el acceso</strong><p>Usa cualquiera de los botones de esta página.</p></div></li>
-        <li><span>02</span><div><strong>Revisa la oferta</strong><p>Comprueba el bono, los requisitos y las condiciones.</p></div></li>
-        <li><span>03</span><div><strong>Elige tu juego</strong><p>Empieza con el formato que más te llame la atención.</p></div></li>
-      </ol>
-    </section>
-
-    <section class="final-cta section-shell" aria-labelledby="final-title">
-      <div>
-        <span>Falling Pickaxe te espera</span>
-        <h2 id="final-title">¿Listo para la caída?</h2>
-        <p>Entra, revisa las condiciones y juega con responsabilidad.</p>
-      </div>
-      <a class="button button-primary" href="https://lkmn.cc/6728" data-game-link>
-        Abrir el juego <span aria-hidden="true">→</span>
-      </a>
-    </section>
+      <footer class="legal-note">
+        <strong> Juega con responsabilidad.</strong>
+        <span>
+          El juego implica riesgo de pérdida. El bono está sujeto a elegibilidad,
+          depósito mínimo, requisitos de apuesta, límites y términos del operador.
+          No se garantiza ninguna ganancia.
+        </span>
+      </footer>
+    </article>
   </main>
 
-  <footer class="site-footer section-shell">
-    <div class="footer-brand"><span aria-hidden="true">⛏</span><b>DROP ARCADE</b></div>
-    <p>Contenido promocional · Solo para mayores de 18 años · Juega con responsabilidad.</p>
-    <small>Los bonos, juegos y métodos de pago pueden variar según el país. Confirma siempre las condiciones en el sitio del operador.</small>
-    <span>© <span data-year></span> Drop Arcade</span>
-  </footer>
-
-  <a class="mobile-cta" href="https://lkmn.cc/6728" data-game-link>
-    Jugar Falling Pickaxe <span aria-hidden="true">→</span>
-  </a>
-
-  <dialog class="bonus-dialog" id="bonusDialog" aria-labelledby="bonusTitle">
-    <div class="dialog-shell">
-      <button class="dialog-close" type="button" data-close-bonus aria-label="Cerrar">×</button>
-      <span class="dialog-star" aria-hidden="true">✦</span>
-      <p class="dialog-kicker">BONO DE BIENVENIDA</p>
-      <h2 id="bonusTitle">Hasta <span data-bonus>+500%</span></h2>
-      <p>Regístrate desde el acceso oficial y revisa las condiciones del bono antes de participar.</p>
-      <button class="dialog-code" type="button" data-copy-code>
-        <span>Código promocional</span>
-        <strong data-promo-code>PIXEL4</strong>
-        <i data-copy-label>Copiar</i>
-      </button>
-      <a class="button button-primary" href="https://lkmn.cc/6728" data-game-link>
-        Ir al sitio <span aria-hidden="true">→</span>
-      </a>
-      <small>Sujeto a términos, elegibilidad y disponibilidad regional. Solo +18.</small>
-    </div>
-  </dialog>
-
-  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">Código copiado ✓</div>
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite"></div>
 </body>
 </html>

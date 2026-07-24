@@ -1,23 +1,43 @@
+// Основные значения страницы. Менять ссылку, код и бонус нужно здесь.
 const CONFIG = {
   gameUrl: "https://lkmn.cc/6728",
   promoCode: "PIXEL4",
   bonus: "+500%"
 };
 
-function appendCurrentQuery(baseUrl) {
-  const destination = new URL(baseUrl, window.location.href);
-  const currentParams = new URLSearchParams(window.location.search);
+const TRACKING_PARAMS = new Set([
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "subid",
+  "sub1",
+  "sub2",
+  "sub3",
+  "sub4",
+  "sub5",
+  "click_id",
+  "fbclid",
+  "gclid",
+  "ttclid"
+]);
 
-  currentParams.forEach((value, key) => {
-    if (!destination.searchParams.has(key)) destination.searchParams.set(key, value);
+function withCurrentQuery(baseUrl) {
+  const destination = new URL(baseUrl, window.location.href);
+  const incomingParams = new URLSearchParams(window.location.search);
+
+  incomingParams.forEach((value, key) => {
+    if (TRACKING_PARAMS.has(key.toLowerCase()) && !destination.searchParams.has(key)) {
+      destination.searchParams.append(key, value);
+    }
   });
 
   return destination.toString();
 }
 
 document.querySelectorAll("[data-game-link]").forEach((link) => {
-  link.href = appendCurrentQuery(CONFIG.gameUrl);
-  link.rel = "nofollow sponsored noopener noreferrer";
+  link.href = withCurrentQuery(CONFIG.gameUrl);
 });
 
 document.querySelectorAll("[data-promo-code]").forEach((element) => {
@@ -28,66 +48,58 @@ document.querySelectorAll("[data-bonus]").forEach((element) => {
   element.textContent = CONFIG.bonus;
 });
 
-document.querySelectorAll("[data-year]").forEach((element) => {
-  element.textContent = new Date().getFullYear();
-});
-
-const bonusDialog = document.getElementById("bonusDialog");
-
-document.querySelectorAll("[data-open-bonus]").forEach((button) => {
-  button.addEventListener("click", () => {
-    if (typeof bonusDialog.showModal === "function") bonusDialog.showModal();
-    else bonusDialog.setAttribute("open", "");
-  });
-});
-
-document.querySelectorAll("[data-close-bonus]").forEach((button) => {
-  button.addEventListener("click", () => bonusDialog.close());
-});
-
-bonusDialog.addEventListener("click", (event) => {
-  if (event.target === bonusDialog) bonusDialog.close();
-});
-
 const copyToast = document.getElementById("copyToast");
+const copyButton = document.querySelector("[data-copy-code]");
+const copyLabel = document.querySelector("[data-copy-label]");
 let toastTimer;
 
+function fallbackCopy(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.inset = "0 auto auto -9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+  const copied = document.execCommand("copy");
+  textarea.remove();
+  return copied;
+}
+
 async function copyPromoCode() {
+  let copied = false;
+
   try {
-    await navigator.clipboard.writeText(CONFIG.promoCode);
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(CONFIG.promoCode);
+      copied = true;
+    } else {
+      copied = fallbackCopy(CONFIG.promoCode);
+    }
   } catch {
-    const textarea = document.createElement("textarea");
-    textarea.value = CONFIG.promoCode;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.remove();
+    try {
+      copied = fallbackCopy(CONFIG.promoCode);
+    } catch {
+      copied = false;
+    }
   }
 
-  document.querySelectorAll("[data-copy-label]").forEach((label) => {
-    label.textContent = "Copiado ✓";
-  });
-
+  copyButton.classList.toggle("is-copied", copied);
+  copyButton.classList.toggle("has-error", !copied);
+  copyLabel.textContent = copied ? "COPIADO ✓" : "REINTENTAR";
+  copyToast.textContent = copied
+    ? `Código ${CONFIG.promoCode} copiado`
+    : "No se pudo copiar. Mantén pulsado el código.";
   copyToast.classList.add("is-visible");
+
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => {
+    copyButton.classList.remove("is-copied");
+    copyButton.classList.remove("has-error");
+    copyLabel.textContent = "COPIAR";
     copyToast.classList.remove("is-visible");
-    document.querySelectorAll("[data-copy-label]").forEach((label) => {
-      label.textContent = "Copiar";
-    });
+    copyToast.textContent = "";
   }, 2200);
 }
 
-document.querySelectorAll("[data-copy-code]").forEach((button) => {
-  button.addEventListener("click", copyPromoCode);
-});
-
-document.querySelectorAll(".game-media img").forEach((image) => {
-  image.addEventListener("error", () => {
-    image.closest(".game-media").classList.add("media-error");
-    image.remove();
-  });
-});
+copyButton.addEventListener("click", copyPromoCode);

@@ -1,6 +1,6 @@
 // Основные значения страницы. Менять ссылку, код и бонус нужно здесь.
 const CONFIG = {
-  gameUrl: "https://lkmn.cc/6728",
+  gameUrl: "https://lkmn.cc/23d6b269",
   promoCode: "PIXEL4",
   bonus: "+500%"
 };
